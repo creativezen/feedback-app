@@ -1,0 +1,49 @@
+.element {
+  display: inline-block;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 1;
+
+  &:hover {
+    .arrow svg {
+      fill: var(--white);
+    }
+  }
+}
+
+.accent {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: var(--white);
+
+  &:hover {
+    background-color: var(--black);
+    border-color: var(--black);
+  }
+}
+
+.zero {
+  background-color: transparent;
+  border-color: var(--accent);
+  color: var(--black);
+
+  &:hover {
+    background-color: var(--black);
+    border-color: var(--black);
+    color: var(--white);
+  }
+}
+
+.arrow {
+  margin-left: 6px;
+}
+
+.down {
+  transform: rotate(90deg);
+  transition: ease-in 0.3s;
+}

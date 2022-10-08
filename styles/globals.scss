@@ -1,0 +1,56 @@
+/** @format */
+
+@use "./reset";
+
+:root {
+  /* TYPOGRAPHY */
+  --font: "Inter", sans-serif;
+
+  /* BRAND COLORS */
+  --white: #ffffff;
+  --black: #0c2547;
+  --accent: #7653fc;
+
+  /* GRAY COLORS */
+  --gray-bg: #e5e5e5;
+  --gray-text: #787d85;
+  --gray-line: #ebebeb;
+  --gray-badge: #b3c0d9;
+
+  /* BLUE COLORS */
+  --blue-bg: #f9f8ff;
+
+  /* SPECIAL COLORS */
+  --green: #c8f8e4;
+  --red: #de0000;
+  --green-bg: #1dc37e;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background-color: var(--gray-bg);
+  font-family: var(--font), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  color: var(--black);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+}
