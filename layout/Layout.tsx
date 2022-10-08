@@ -6,18 +6,16 @@ import { Main } from "./Main/Main"
 import { FunctionComponent } from "react"
 import { Aside } from "./Aside/Aside"
 import { Footer } from "./Footer/Footer"
-import layout from "./Layout.mobule.scss"
+import layout from "./Layout.module.scss"
 
 const Layout = ({ children }: LayoutProps): JSX.Element => {
   return (
-    <>
-      <Header />
-      <Main>
-        <Aside />
-        {children}
-      </Main>
-      <Footer />
-    </>
+    <div className={layout.wrapper}>
+      <Header className={layout.header} />
+      <Aside className={layout.aside} />
+      <Main className={layout.main}>{children}</Main>
+      <Footer className={layout.footer} />
+    </div>
   )
 }
 

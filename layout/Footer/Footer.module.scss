@@ -1,0 +1,28 @@
+/** @format */
+.element {
+  padding: 28px 40px;
+  background-color: var(--accent);
+  font-size: 14px;
+  color: var(--white);
+
+  * {
+    color: inherit;
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.links {
+  margin-left: auto;
+
+  a {
+    color: var(--white);
+  }
+
+  a + a {
+    margin-left: 16px;
+  }
+}

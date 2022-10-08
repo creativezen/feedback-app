@@ -1,1 +1,47 @@
 /** @format */
+
+.wrapper {
+  display: grid;
+  grid-template-columns: auto 230px minmax(320px, 1200px) auto;
+  grid-template-rows: auto 1fr auto;
+  gap: 0 30px;
+  min-height: 100vh;
+  grid-template-areas:
+    ". header header ."
+    ". aside main ."
+    "footer footer footer footer";
+
+  @media only screen and (max-width: 780px) {
+    grid-template-columns: minmax(320px, 1fr);
+
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+  }
+}
+
+.header {
+  grid-area: header;
+  display: none;
+
+  @media only screen and (max-width: 780px) {
+    display: block;
+  }
+}
+
+.aside {
+  grid-area: aside;
+
+  @media only screen and (max-width: 780px) {
+    display: none;
+  }
+}
+
+.main {
+  grid-area: main;
+}
+
+.footer {
+  grid-area: footer;
+}
