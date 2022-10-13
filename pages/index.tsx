@@ -8,9 +8,11 @@ import { Paragraph } from "../components/Paragraph/Paragraph"
 import { Rating } from "../components/Rating/Rating"
 import { Title } from "../components/Title/Title"
 import { LayoutHoc } from "../layout/Layout"
+import { MenuItem } from "../interfaces/menu.interface"
 
-const Home: NextPage = (): JSX.Element => {
+const Home: NextPage<HomeProps> = ({ menu }): JSX.Element => {
   const [rating, setRating] = useState<number>(4)
+
   return (
     <>
       <Title tag="h1">Заголовок</Title>
@@ -30,19 +32,31 @@ const Home: NextPage = (): JSX.Element => {
         Кнопка
       </Button>
       <Rating value={rating} setValue={setRating} isEditable />
+      <ul>
+        {menu.map((item) => (
+          <li key={item._id.secondCategory}>{item._id.secondCategory}</li>
+        ))}
+      </ul>
     </>
   )
 }
 
 export default LayoutHoc(Home)
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const firstCategory = 0
-  const { data: menu } = await axios.post(process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find")
+  const { data: menu } = await axios.post<MenuItem[]>(process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find", {
+    firstCategory,
+  })
   return {
     props: {
       menu,
       firstCategory,
     },
   }
+}
+
+interface HomeProps extends Record<string, unknown> {
+  menu: MenuItem[]
+  firstCategory: number
 }

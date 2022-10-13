@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react"
 import { TitleProps } from "./Title.props"
 import title from "./Title.module.scss"
