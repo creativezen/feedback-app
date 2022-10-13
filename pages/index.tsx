@@ -1,6 +1,7 @@
 /** @format */
 import { useState } from "react"
-import type { NextPage } from "next"
+import type { GetStaticProps, NextPage } from "next"
+import axios from "axios"
 import { Badge } from "../components/Badge/Badge"
 import { Button } from "../components/Button/Button"
 import { Paragraph } from "../components/Paragraph/Paragraph"
@@ -34,3 +35,14 @@ const Home: NextPage = (): JSX.Element => {
 }
 
 export default LayoutHoc(Home)
+
+export const getStaticProps: GetStaticProps = async () => {
+  const firstCategory = 0
+  const { data: menu } = await axios.post(process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find")
+  return {
+    props: {
+      menu,
+      firstCategory,
+    },
+  }
+}
