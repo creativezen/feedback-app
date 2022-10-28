@@ -1,7 +1,9 @@
-import { ReactNode, DetailedHTMLProps, ButtonHTMLAttributes } from "react"
+/** @format */
+
+import { ReactNode, DetailedHTMLProps, ButtonHTMLAttributes } from 'react'
 
 export interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-  appearance: "accent" | "zero"
+  appearance: 'accent' | 'zero'
   children: ReactNode
-  arrow?: "right" | "down"
+  arrow?: 'right' | 'down'
 }

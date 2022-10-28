@@ -1,14 +1,14 @@
 /** @format */
-import { useState } from "react"
-import type { GetStaticProps, NextPage } from "next"
-import axios from "axios"
-import { Badge } from "../components/Badge/Badge"
-import { Button } from "../components/Button/Button"
-import { Paragraph } from "../components/Paragraph/Paragraph"
-import { Rating } from "../components/Rating/Rating"
-import { Title } from "../components/Title/Title"
-import { LayoutHoc } from "../layout/Layout"
-import { MenuItem } from "../interfaces/menu.interface"
+import { useState } from 'react'
+import type { GetStaticProps, NextPage } from 'next'
+import axios from 'axios'
+import { Badge } from '../components/Badge/Badge'
+import { Button } from '../components/Button/Button'
+import { Paragraph } from '../components/Paragraph/Paragraph'
+import { Rating } from '../components/Rating/Rating'
+import { Title } from '../components/Title/Title'
+import { LayoutHoc } from '../layout/Layout'
+import { MenuItem } from '../interfaces/menu.interface'
 
 const Home: NextPage<HomeProps> = ({ menu }): JSX.Element => {
   const [rating, setRating] = useState<number>(4)
@@ -45,7 +45,7 @@ export default LayoutHoc(Home)
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const firstCategory = 0
-  const { data: menu } = await axios.post<MenuItem[]>(process.env.NEXT_PUBLIC_DOMAIN + "/api/top-page/find", {
+  const { data: menu } = await axios.post<MenuItem[]>(process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find', {
     firstCategory,
   })
   return {

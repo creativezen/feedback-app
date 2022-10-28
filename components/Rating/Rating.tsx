@@ -1,10 +1,10 @@
 /** @format */
 
-import { useEffect, useState, KeyboardEvent } from "react"
-import { RatingProps } from "./Rating.props"
-import StarIcon from "./Rating.star.svg"
-import rating from "./Rating.module.scss"
-import cn from "classnames"
+import { useEffect, useState, KeyboardEvent } from 'react'
+import { RatingProps } from './Rating.props'
+import StarIcon from './Rating.star.svg'
+import rating from './Rating.module.scss'
+import cn from 'classnames'
 
 export const Rating = ({ isEditable = false, value, setValue, ...props }: RatingProps): JSX.Element => {
   /*
@@ -27,7 +27,7 @@ export const Rating = ({ isEditable = false, value, setValue, ...props }: Rating
       return (
         <StarIcon
           /*
-          закрашиваем звездочки пока значение рейтинга равно индексe текущей итерации */
+          закрашиваем звездочки пока значение рейтинга равно индексу текущей итерации */
           className={cn({
             [rating.filled]: index < currentRating,
             [rating.editable]: isEditable,
@@ -83,7 +83,7 @@ export const Rating = ({ isEditable = false, value, setValue, ...props }: Rating
   const handleKeySpace = (newValue: number, e: KeyboardEvent<SVGElement>) => {
     /*
     если нажатая клавиша не space или не передан каллбэк setValue, ничего не делаем */
-    if (e.code != "Space" || !setValue) return
+    if (e.code != 'Space' || !setValue) return
     /*
     иначе вызываем калбэк и меняем значение рейтинга */
     setValue(newValue)
