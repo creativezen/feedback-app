@@ -32,11 +32,6 @@ const Home: NextPage<HomeProps> = ({ menu }): JSX.Element => {
         Кнопка
       </Button>
       <Rating value={rating} setValue={setRating} isEditable />
-      <ul>
-        {menu.map((item) => (
-          <li key={item._id.secondCategory}>{item._id.secondCategory}</li>
-        ))}
-      </ul>
     </>
   )
 }

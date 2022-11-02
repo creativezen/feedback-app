@@ -1,0 +1,11 @@
+/** @format */
+
+.block {
+  display: block;
+}
+
+.first {
+  &Active {
+    color: var(--accent);
+  }
+}
