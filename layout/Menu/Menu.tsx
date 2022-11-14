@@ -3,14 +3,16 @@ import React from 'react'
 import cn from 'classnames'
 import { AppContext } from '../../context/app.context'
 import { FirstLevelMenuItem } from '../../interfaces/menu.interface'
+import { TopLevelCategory } from '../../interfaces/page.interface'
 
+// SVG иконки интерфейса для ссылок в меню
 import MenuIconCourses from './Menu.icon-courses.svg'
 import MenuIconServices from './Menu.icon-services.svg'
 import MenuIconBooks from './Menu.icon-books.svg'
 import MenuIconProducts from './Menu.icon-products.svg'
 
+// Стили меню
 import menuApp from './Menu.module.scss'
-import { TopLevelCategory } from '../../interfaces/page.interface'
 
 const firstLevelMenu: FirstLevelMenuItem[] = [
   { route: 'courses', name: 'Курсы', icon: <MenuIconCourses />, _id: TopLevelCategory.Courses },
