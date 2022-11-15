@@ -14,6 +14,7 @@ import MenuIconProducts from './Menu.icon-products.svg'
 // Стили меню
 import menuApp from './Menu.module.scss'
 
+// Массив ссылок для отрисовки категорий в меню
 const firstLevelMenu: FirstLevelMenuItem[] = [
   { route: 'courses', name: 'Курсы', icon: <MenuIconCourses />, _id: TopLevelCategory.Courses },
   { route: 'services', name: 'Сервисы', icon: <MenuIconServices />, _id: TopLevelCategory.Services },
@@ -47,7 +48,16 @@ export const Menu = (): JSX.Element => {
   }
 
   const buildSecondLevel = () => {
-    return <div></div>
+    return (
+      <div>
+        {menu.map((item) => (
+          <div key={item._id.secondCategory}>
+            <div className={menuApp.second}>{item._id.secondCategory}</div>
+            <div></div>
+          </div>
+        ))}
+      </div>
+    )
   }
 
   const buildThirdLevel = () => {

@@ -1,6 +1,5 @@
 /** @format */
 
-import { FunctionComponent } from 'react'
 import { TopLevelCategory } from './page.interface'
 
 export interface PageItem {
@@ -15,6 +14,7 @@ export interface MenuItem {
     secondCategory: string
   }
   pages: PageItem[]
+  isOpened?: boolean
 }
 
 export interface FirstLevelMenuItem {
