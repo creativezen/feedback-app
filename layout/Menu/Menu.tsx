@@ -2,7 +2,7 @@
 import React from 'react'
 import cn from 'classnames'
 import { AppContext } from '../../context/app.context'
-import { FirstLevelMenuItem } from '../../interfaces/menu.interface'
+import { FirstLevelMenuItem, PageItem } from '../../interfaces/menu.interface'
 import { TopLevelCategory } from '../../interfaces/page.interface'
 
 // SVG иконки интерфейса для ссылок в меню
@@ -25,48 +25,65 @@ const firstLevelMenu: FirstLevelMenuItem[] = [
 export const Menu = (): JSX.Element => {
   const { menu, setMenu, firstCategory } = React.useContext(AppContext)
 
-  const buildFirstLevel = () => {
+  const buildMenu = () => {
     return (
       <div className={menuApp.block}>
         {firstLevelMenu.map(({ _id, route, icon, name }) => (
-          <div key={route}>
+          <div key={route} className={menuApp.first}>
             <a href={`/${route}`}>
               <div
-                className={cn(menuApp.first, {
-                  [menuApp.firstActive]: _id == firstCategory,
+                className={cn(menuApp.first_title, {
+                  [menuApp.first_active]: _id == firstCategory,
                 })}
               >
                 {icon}
                 <span>{name}</span>
               </div>
             </a>
-            {_id == firstCategory && buildSecondLevel()}
+            {_id == firstCategory && buildSecondLevel(route)}
           </div>
         ))}
       </div>
     )
   }
 
-  const buildSecondLevel = () => {
+  const buildSecondLevel = (route: string) => {
     return (
       <div>
-        {menu.map((item) => (
-          <div key={item._id.secondCategory}>
-            <div className={menuApp.second}>{item._id.secondCategory}</div>
-            <div></div>
+        {menu.map(({ _id, isOpened, pages }) => (
+          <div key={_id.secondCategory} className={menuApp.second}>
+            <div className={menuApp.second_title}>{_id.secondCategory}</div>
+            <div
+              className={cn(menuApp.secondBlock, {
+                [menuApp.secondActive]: isOpened,
+              })}
+            >
+              {buildThirdLevel(pages, route)}
+            </div>
           </div>
         ))}
       </div>
     )
   }
 
-  const buildThirdLevel = () => {
-    return <div></div>
+  const buildThirdLevel = (pages: PageItem[], route: string) => {
+    return (
+      <div className={menuApp.third}>
+        {pages.map(({ alias }) => (
+          <a
+            href={`/${route}/${alias}`}
+            className={cn(menuApp.third_link, {
+              [menuApp.third_active]: true,
+            })}
+          ></a>
+        ))}
+      </div>
+    )
   }
 
   return (
     <div className={menuApp.block}>
-      <ul>{buildFirstLevel()}</ul>
+      <ul>{buildMenu()}</ul>
     </div>
   )
 }
